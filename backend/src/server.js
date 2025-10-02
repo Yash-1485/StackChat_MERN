@@ -6,8 +6,9 @@ const userRoutes = require("./routes/user.route");
 const chatRoutes = require("./routes/chat.route");
 const { connectDB } = require("./lib/db");
 require("dotenv").config();
+const path = require("path");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 const app = express();
 
 app.use(cors({
@@ -15,7 +16,7 @@ app.use(cors({
     origin: (origin, callback) => {
         callback(null, origin || true);
     },
-    credentials: true // allow frontend to send the cookies
+    credentials: true
 }))
 
 app.use(cookieParser())
@@ -25,6 +26,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
+
+if (process.env.MODE === "production") {
+  app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend", "dist", "index.html"));
+  });
+}
 
 app.listen(PORT, () => {
     console.log(`Server is started on port ${PORT}`);

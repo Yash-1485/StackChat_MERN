@@ -1,0 +1,22 @@
+{
+  "name": "stackchat_mern",
+  "version": "1.0.0",
+  "description": "**StackChat** is a modern, full-stack real-time chat application with video calling, friend requests, and sleek UI built for seamless communication. Designed for students, teams, and communities.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yash-1485/StackChat_MERN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Yash-1485/StackChat_MERN/issues"
+  },
+  "homepage": "https://github.com/Yash-1485/StackChat_MERN#readme"
+}
