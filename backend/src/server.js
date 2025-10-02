@@ -11,7 +11,10 @@ const PORT = process.env.PORT;
 const app = express();
 
 app.use(cors({
-    origin: process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:3000", "https://stackchat-five.vercel.app"],
+    // origin: process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:3000", "https://stackchat-five.vercel.app"],
+    origin: (origin, callback) => {
+        callback(null, origin || true);
+    },
     credentials: true // allow frontend to send the cookies
 }))
 
