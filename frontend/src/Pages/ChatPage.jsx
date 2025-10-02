@@ -107,26 +107,35 @@ const ChatPage = () => {
     if (loading || !chatClient || !channel) return <ChatLoader />;
 
     return (
-        <div className="h-[91.75vh] relative">
-            <div className="themeToggleBtn absolute right-0 z-10 flex gap-2 p-2">
-                <Sun className="text-yellow-600/90" />
-                <div>
-                    <input type="checkbox" className="toggle toggle-success bg-emerald-400 transition-all" name="themeToggle" id="themeToggle" onChange={()=>{toggleChatTheme()}} checked={chatTheme==="dark"} />
-                </div>
-                <Moon className="text-blue-800"/>
+        <div className="flex flex-col h-[calc(100vh-64px)] relative w-full ">
+            <div className="themeToggleBtn absolute right-0 z-10 p-2">
+                <button
+                    onClick={() => toggleChatTheme()}
+                    className={`p-2 rounded-full transition-colors duration-300 border-2 border-gray-200 ${chatTheme === "dark"
+                            ? "bg-blue-800/20 hover:bg-blue-800/30 text-blue-800"
+                            : "bg-yellow-500/70 hover:bg-yellow-600/30 text-yellow-700"
+                        }`}
+                    aria-label="Toggle theme"
+                >
+                    {chatTheme === "dark" ? (
+                        <Moon className="size-6" />
+                    ) : (
+                        <Sun className="size-6" />
+                    )}
+                </button>
             </div>
             <Chat client={chatClient} theme={`messaging str-chat__theme-${chatTheme}`}>
                 {/* Chat Theme Toggle Btn */}
                 <Channel channel={channel}>
-                <div className="w-full relative">
-                    <CallButton handleVideoCall={handleVideoCall} />
-                    <Window>
-                        <ChannelHeader />
-                        <MessageList />
-                        <MessageInput focus />
-                    </Window>
-                </div>
-                <Thread />
+                    <div className="w-full relative">
+                        <CallButton handleVideoCall={handleVideoCall} />
+                        <Window>
+                            <ChannelHeader />
+                            <MessageList />
+                            <MessageInput focus />
+                        </Window>
+                    </div>
+                    <Thread />
                 </Channel>
             </Chat>
         </div>
