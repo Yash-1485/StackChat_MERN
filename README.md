@@ -41,6 +41,20 @@
 
 ---
 
+## 📸 Screenshots  
+
+### Landing Page  
+<img src="./frontend/src/assets/StackChat_1.png" alt="Home Page" width="700">
+
+### Home Page - Various types of 20+ themes
+<img src="./frontend/src/assets/StackChat_2.png" alt="Listings Page" width="700">
+
+### Chat Page  
+<img src="./frontend/src/assets/StackChat_3.png" alt="Recommendation Section" width="700">
+
+---
+
+
 ## 🛠️ Setup Instructions
 
 ### 🔧 Backend
